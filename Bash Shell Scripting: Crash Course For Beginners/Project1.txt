@@ -1,0 +1,205 @@
+Scripts > mkdir Project1
+Scripts > cd ..
+Desktop > tree Scripts 
+Scripts
+└── Project1
+
+
+Project1 > touch kaileyCuoco.txt career.txt earlyLife.txt
+
+Scripts > tree .
+.
+└── Project1
+        ├── career.txt
+        ├── earlyLife.txt
+        └── kaileyCuoco.txt
+
+
+Project1 > echo "In September 2007, Cuoco began starring in the CBS sitcom The Big Bang Theory, playing Penny, a Cheesecake Factory employee and aspiring actress who lives across the hall from physicists Dr. Leonard Hofstadter and Dr. Sheldon Cooper. Prior to the 2010–2011 season, she earned US,000 an episode for the series, the same as her co-stars. In 2010, the cast negotiated a raise for each actor to make US,000 per episode.[11] As of August 2014, Cuoco and her co-stars from The Big Bang Theory Johnny Galecki and Jim Parsons each earned an estimated US million per episode.[12][13]
+
+In late October 2012, Cuoco enlisted the help of her sister Briana to organize a flash mob on the set of the show, in which she and the cast and crew surprised the studio audience by suddenly lip syncing and dancing to Carly Rae Jepsen's song Call Me Maybe. A video of the event was posted on YouTube and became a viral success.[14][15] A clip from the performance was also played during Cuoco's January 8, 2013, appearance on the late-night talk show Conan.
+" >> kaileyCuoco.txt 
+
+
+Project1 > echo "Cuoco made her first feature film appearance as the young Karin Carter in the 1995 action thriller Virtuosity.[9] From 2000 to 2001, she appeared on the CBS sitcom Ladies Man and in 2000 she portrayed former The Brady Bunch star Maureen McCormick in the TV film Growing Up Brady as well as starring in the Disney Channel original film Alley Cats Strike. In September 2002, she began a starring role as Bridget Hennessy on the ABC sitcom 8 Simple Rules for Dating My Teenage Daughter (afterwards 8 Simple Rules). Bridget was the oldest child, despite Cuoco being six years younger than Amy Davidson, who played her younger sister.
+
+In addition to the final season of 8 Simple Rules, Cuoco had starring roles on the NBC miniseries 10.5, the ABC Family original film Crimes of Fashion, the independent film Debating Robert Lee,[10] and in the film The Hollow at the same time. She also voiced the character of Brandy Harrington, a 14-year-old anthropomorphic mixed-breed dog, on the Disney Channel animated series Brandy and Mr. Whiskers. She voiced the character of Kirstee Smith in Bratz from 2004 to 2005. In the eighth season of the TV series Charmed, she appeared as Billie Jenkins, a powerful young witch with the powers of telekinesis and projection. Executive producer Brad Kern stated that Cuoco's character was initially brought in as a possible spin-off.
+" >> career.txt 
+
+
+Project1 > echo "Kaley Christine Cuoco was born on November 30, 1985, in Camarillo, California. She is the elder daughter of Layne Ann (née Wingate), a homemaker, and Gary Carmine Cuoco, a realtor.[4] Her father is of Italian descent while her mother is of English and German ancestry.[5] Her sister, Briana, is an actress and singer who competed on the fifth season of The Voice and has a recurring role on the HBO Max series The Flight Attendant[6] and on Harley Quinn as Barbara Gordon/Batgirl. As a child, Cuoco was a ranked amateur tennis player, a sport she took up when she was three years old.[7] She stopped playing at the age of 16 to pursue a career in acting.
+" >> earlyLife.txt 
+
+
+Project1 > touch logicToFindHotWord.sh
+
+
+Project1 > tree .
+.
+├── career.txt
+├── earlyLife.txt
+├── kaileyCuoco.txt
+└── logicToFindHotWord.sh
+
+
+Project1 > ls -l
+total 24
+-rw-r--r--    1 bhushanthombare    staff    1364 Jul 26 19:36 career.txt
+-rw-r--r--    1 bhushanthombare    staff      657 Jul 26 19:36 earlyLife.txt
+-rw-r--r--    1 bhushanthombare    staff    1038 Jul 26 19:35 kaileyCuoco.txt
+-rw-r--r--    1 bhushanthombare    staff          0 Jul 26 19:38 logicToFindHotWord.sh
+
+
+Project1 > chmod +x logicToFindHotWord.sh 
+
+
+Project1 > ls -l
+total 24
+-rw-r--r--    1 bhushanthombare    staff    1364 Jul 26 19:36 career.txt
+-rw-r--r--    1 bhushanthombare    staff      657 Jul 26 19:36 earlyLife.txt
+-rw-r--r--    1 bhushanthombare    staff    1038 Jul 26 19:35 kaileyCuoco.txt
+-rwxr-xr-x    1 bhushanthombare    staff          0 Jul 26 19:38 logicToFindHotWord.sh
+
++-----------------------------------------------+
+| #! /bin/bash                                 |
+|                                               |
+| for everyFile in *;                          |
+| do                                            |
+|   echo "$everyFile"                          |
+| done                                          |
++-----------------------------------------------+
+
+
+Project1 > ./logicToFindHotWord.sh 
+career.txt
+earlyLife.txt
+kaileyCuoco.txt
+logicToFindHotWord.sh
+
+
+
++-----------------------------------------------+
+| #! /bin/bash                                 |
+|                                               |
+| for everyFile in *;                          |
+| do                                            |
+|   echo "$everyFile"                          |
+| done                                          |
++-----------------------------------------------+
+
+
+
+Project1 > ./logicToFindHotWord.sh      
+career.txt
+is Regular file
+earlyLife.txt
+is Regular file
+kaileyCuoco.txt
+is Regular file
+logicToFindHotWord.sh
+is Regular file
+
+
+
++---------------------------------------------------------------+
+| #! /bin/bash                                                 |
+|                                                               |
+| for everyFile in *;                                          |
+| do                                                            |
+|   echo "$everyFile"                                          |
+|   if [ -f "$everyFile" -a "$everyFile" != "logicToFindHotWord.sh" ]; then |
+|     echo "is Regular file"                                  |
+|     grep -ni "kaley" "$everyFile"                           |
+|   else                                                        |
+|     echo "isn't Regular file"                               |
+|   fi                                                          |
+| done                                                          |
++---------------------------------------------------------------+
+
+
+Project1 > ./logicToFindHotWord.sh
+career.txt
+is Regular file
+earlyLife.txt
+is Regular file
+1:Kaley Christine Cuoco was born on November 30, 1985, in Camarillo, California. She is the elder daughter of Layne Ann (née Wingate), a homemaker, and Gary Carmine Cuoco, a realtor.[4] Her father is of Italian descent while her mother is of English and German ancestry.[5] Her sister, Briana, is an actress and singer who competed on the fifth season of The Voice and has a recurring role on the HBO Max series The Flight Attendant[6] and on Harley Quinn as Barbara Gordon/Batgirl. As a child, Cuoco was a ranked amateur tennis player, a sport she took up when she was three years old.[7] She stopped playing at the age of 16 to pursue a career in acting.
+kaileyCuoco.txt
+is Regular file
+1:In September 2007, kaley began starring in the CBS sitcom The Big Bang Theory, playing Penny, a Cheesecake Factory employee and aspiring actress who lives across the hall from physicists Dr. Leonard Hofstadter and Dr. Sheldon Cooper. Prior to the 2010–2011 season, she earned US,000 an episode for the series, the same as her co-stars. In 2010, the cast negotiated a raise for each actor to make US,000 per episode.[11] As of August 2014, Cuoco and her co-stars from The Big Bang Theory Johnny Galecki and Jim Parsons each earned an estimated US million per episode.[12][13]
+6:kaley
+9:kaley
+logicToFindHotWord.sh
+isn't Regular file
+
+
+
++--------------------------------------------------------------------------+
+| #! /bin/bash                                                             |
+|                                                                          |
+| for everyFile in *;                                                      |
+| do                                                                       |
+|   echo "--------------------NewFile---------------------------------------------" |
+|   echo "$everyFile"                                                       |
+|   if [ -f "$everyFile" ] && [ "$everyFile" != "logicToFindHotWord.sh" ]; then |
+|     echo "is Regular file"                                               |
+|     result=$(grep -ni "kaley" "$everyFile")                              |
+|     if [ -z "$result" ]; then                                            |
+|       echo "NOT FOUND"                                                   |
+|     else                                                                 |
+|       echo "FOUND"                                                       |
+|     fi                                                                   |
+|   else                                                                    |
+|     echo "isn't Regular file"                                            |
+|   fi                                                                      |
+| done                                                                      |
++--------------------------------------------------------------------------+
+
+
+
+
+Project1 > ./logicToFindHotWord.sh
+--------------------NewFile---------------------------------------------
+career.txt
+is Regular file
+NOT FOUND
+--------------------NewFile---------------------------------------------
+earlyLife.txt
+is Regular file
+FOUND
+--------------------NewFile---------------------------------------------
+kaileyCuoco.txt
+is Regular file
+FOUND
+--------------------NewFile---------------------------------------------
+logicToFindHotWord.sh
+isn't Regular file
+
+
+
+
++---------------------------------------------------------------+
+| #! /bin/bash                                                   |
+|                                                                 |
+| mkdir ./Hot_Folder                                              |
+|                                                                 |
+| for everyFile in *;                                            |
+| do                                                              |
+|   if [ -f "$everyFile" ] && [ "$everyFile" != "logicToFindHotWord.sh" ]; then |
+|     result=$(grep -ni "kaley" "$everyFile")                     |
+|     if [ ! -z "$result" ]; then                                 |
+|       cp "$everyFile" ./Hot_Folder                              |
+|     fi                                                          |
+|   fi                                                            |
+| done                                                            |
++---------------------------------------------------------------+
+
+
+
+Project1 > ./logicToFindHotWord.sh 
+Project1 > ls Hot_Folder 
+earlyLife.txt	kaileyCuoco.txt
+
+
+
+
+

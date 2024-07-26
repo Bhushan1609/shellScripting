@@ -1,0 +1,225 @@
+﻿Project2 > find . -type d
+.
+./23
+./23/231
+./12
+
+
++---------------------------------------------------------------+
+| #! /bin/bash                                                   |
+|                                                                 |
+| a=$(find . -type d)                                            |
+|                                                                 |
+| for i in $a;                                                   |
+| do                                                             |
+|   echo "$i"                                                    |
+|   echo "This is the Folder $i"                                 |
+| done                                                           |
++---------------------------------------------------------------+
+
+
+
+
+Project2 > ./logicToFindHotWord.sh
+.
+This is the Folder 
+./23
+This is the Folder 
+./23/231
+This is the Folder 
+./12
+This is the Folder
+
+
+
++---------------------------------------------------------------+
+| #! /bin/bash                                                  |
+|                                                               |
+| for i in $(find . -type d); do                               |
+|     echo "This is the Folder $i"                             |
+| done                                                          |
++---------------------------------------------------------------+
+
+
+
+
+Project2 > ./logicToFindHotWord.sh
+This is the Folder .
+This is the Folder ./23
+This is the Folder ./23/231
+This is the Folder ./12
+Project2 > 
+
+
+
++---------------------------------------------------------------+
+| #! /bin/bash                                                  |
+|                                                               |
+| for i in $(find . -type d);                                  |
+| do                                                            |
+|     echo "This is the Folder $i"                              |
+|     for files in $i/*;                                       |
+|     do                                                        |
+|         echo "File is $files"                                |
+|     done                                                      |
+| done                                                          |
++---------------------------------------------------------------+
+
+
+
+
+Project2 > ./logicToFindHotWord.sh
+This is the Folder .
+File is ./12
+File is ./23
+File is ./logicToFindHotWord.sh
+This is the Folder ./23
+File is ./23/231
+File is ./23/earlyLife23.txt
+File is ./23/kaileyCuoco23.txt
+This is the Folder ./23/231
+File is ./23/231/career231.txt
+File is ./23/231/earlyLife231.txt
+This is the Folder ./12
+File is ./12/career.txt
+File is ./12/earlyLife.txt
+File is ./12/kaileyCuoco.txt
+Project2 > 
+
+
++---------------------------------------------------------------+
+| #! /bin/bash                                                  |
+|                                                               |
+| for i in $(find . -type d);                                  |
+| do                                                            |
+|     echo "This is the Folder $i"                              |
+|     for files in $i/*;                                       |
+|     do                                                        |
+|         if [ -f "$files" ]; then                             |
+|             echo "Only Files $files"                         |
+|         fi                                                    |
+|     done                                                      |
+|     echo "----------------------------"                       |
+| done                                                          |
++---------------------------------------------------------------+
+
+
+
+
+Project2 > ./logicToFindHotWord.sh
+This is the Folder .
+Only Files ./logicToFindHotWord.sh
+----------------------------
+This is the Folder ./23
+Only Files ./23/earlyLife23.txt
+Only Files ./23/kaileyCuoco23.txt
+----------------------------
+This is the Folder ./23/231
+Only Files ./23/231/career231.txt
+Only Files ./23/231/earlyLife231.txt
+----------------------------
+This is the Folder ./12
+Only Files ./12/career.txt
+Only Files ./12/earlyLife.txt
+Only Files ./12/kaileyCuoco.txt
+----------------------------
+
+
+
++---------------------------------------------------------------+
+| #! /bin/bash                                                  |
+|                                                               |
+| for i in $(find . -type d);                                  |
+| do                                                            |
+|     echo "This is the Folder $i"                              |
+|     for files in $i/*;                                       |
+|     do                                                        |
+|         if [ -f "$files" ]; then                             |
+|             result=$(grep -ni "kaley" "$files")              |
+|             if [ ! -z "$result" ]; then                      |
+|                 echo "Found in $files"                       |
+|                 echo "***************"                      |
+|             fi                                                |
+|         fi                                                    |
+|     done                                                      |
+|     echo "----------------------------"                       |
+| done                                                          |
++---------------------------------------------------------------+
+
+
+
+
+Project2 > ./logicToFindHotWord.sh
+This is the Folder .
+Found in ./logicToFindHotWord.sh
+***************
+----------------------------
+This is the Folder ./23
+Found in ./23/earlyLife23.txt
+***************
+Found in ./23/kaileyCuoco23.txt
+***************
+----------------------------
+This is the Folder ./23/231
+Found in ./23/231/earlyLife231.txt
+***************
+----------------------------
+This is the Folder ./12
+Found in ./12/earlyLife.txt
+***************
+Found in ./12/kaileyCuoco.txt
+***************
+----------------------------
+
+
+
++---------------------------------------------------------------+
+| #! /bin/bash                                                  |
+|                                                               |
+| mkdir -p ./Hot_Folder                                         |
+|                                                               |
+| for i in $(find . -type d);                                  |
+| do                                                            |
+|     echo "This is the Folder $i"                              |
+|                                                               |
+|     for files in $i/*;                                       |
+|     do                                                        |
+|         if [ -f "$files" ]; then                             |
+|             result=$(grep -ni "kaley" "$files")              |
+|                                                               |
+|             if [ ! -z "$result" ]; then                      |
+|                 name=$(basename "$files")                    |
+|                 cp "$files" ./Hot_Folder/"$name"             |
+|                 echo "Found in $files"                       |
+|                 echo "***************"                      |
+|             fi                                                |
+|         fi                                                    |
+|     done                                                      |
+|                                                               |
+|     echo "----------------------------"                       |
+| done                                                          |
++---------------------------------------------------------------+
+
+
+
+
+
+Project2 > ./logicToFindHotWord.sh
+This is the Folder .
+----------------------------
+This is the Folder ./Hot_Folder
+cp: ./Hot_Folder/logicToFindHotWord.sh and ./Hot_Folder/logicToFindHotWord.sh are identical (not copied).
+----------------------------
+This is the Folder ./23
+----------------------------
+This is the Folder ./23/231
+----------------------------
+This is the Folder ./12
+----------------------------
+Project2 > ls Hot_Folder 
+earlyLife.txt		earlyLife231.txt	kaileyCuoco23.txt
+earlyLife23.txt		kaileyCuoco.txt		logicToFindHotWord.sh
+
+
+
+
